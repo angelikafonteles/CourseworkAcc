@@ -7,6 +7,7 @@ public final class BusinessAccount extends Account {
 	private double loanLimit;
 	
 	public BusinessAccount() {
+		super();
 	}
 
 	public BusinessAccount(int number, String holder, double balance, AccountType type, double withdrawLimit,

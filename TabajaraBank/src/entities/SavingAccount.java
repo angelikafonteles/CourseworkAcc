@@ -7,6 +7,7 @@ public final class SavingAccount extends Account {
 	private double interestRate;
 	
 	public SavingAccount() {
+		super();
 	}
 
 	public SavingAccount(int number, String holder, double balance, AccountType type, double withdrawLimit,
