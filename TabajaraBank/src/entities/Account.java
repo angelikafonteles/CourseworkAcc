@@ -3,7 +3,7 @@ package entities;
 import entities.enums.AccountType;
 import entities.exceptions.DomainException;
 
-public class Account {
+public abstract class Account {
 	
 	private int number;
 	private String holder;

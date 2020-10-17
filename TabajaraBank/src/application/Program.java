@@ -7,6 +7,7 @@ import java.util.Scanner;
 
 import entities.Account;
 import entities.BusinessAccount;
+import entities.CheckingAccount;
 import entities.SavingAccount;
 
 public class Program {
@@ -14,7 +15,7 @@ public class Program {
 	public static void main(String[] args) {
 	
 		Scanner sc = new Scanner(System.in);
-		Account account = new Account();
+		Account account = new CheckingAccount();
 		SavingAccount sacc;
 		BusinessAccount bacc;
 		
@@ -33,7 +34,7 @@ public class Program {
 			double withdrawLimit = sc.nextDouble();
 		
 			if(accountType.ordinal() == 0) {
-				account = new Account(number, holder, balance, accountType, withdrawLimit);
+				account = new CheckingAccount(number, holder, balance, accountType, withdrawLimit);
 			}
 			else if(accountType.ordinal() == 1) {
 				System.out.print("Interest Rate: ");
