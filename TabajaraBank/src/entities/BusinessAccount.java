@@ -11,8 +11,8 @@ public final class BusinessAccount extends Account {
 	}
 
 	public BusinessAccount(int number, String holder, double balance, AccountType type, double withdrawLimit,
-			double loanLimit) {
-		super(number, holder, balance, type, withdrawLimit);
+			String passcode, double loanLimit) {
+		super(number, holder, balance, type, withdrawLimit, passcode);
 		this.loanLimit = loanLimit;
 	}
 

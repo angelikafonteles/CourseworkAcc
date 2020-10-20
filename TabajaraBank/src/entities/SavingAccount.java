@@ -11,8 +11,8 @@ public final class SavingAccount extends Account {
 	}
 
 	public SavingAccount(int number, String holder, double balance, AccountType type, double withdrawLimit,
-			double interestRate) {
-		super(number, holder, balance, type, withdrawLimit);
+			String passcode, double interestRate) {
+		super(number, holder, balance, type, withdrawLimit, passcode);
 		this.interestRate = interestRate;
 	}
 

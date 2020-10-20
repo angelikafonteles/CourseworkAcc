@@ -4,22 +4,24 @@ import entities.enums.AccountType;
 import entities.exceptions.DomainException;
 
 public abstract class Account {
-	
+
 	private int number;
 	private String holder;
 	protected double balance;
 	private AccountType type;
 	private double withdrawLimit;
-	
+	private String passcode;
+
 	public Account() {
 	}
-	
-	public Account(int number, String holder, double balance, AccountType type, double withdrawLimit) {
+
+	public Account(int number, String holder, double balance, AccountType type, double withdrawLimit, String passcode) {
 		this.number = number;
 		this.holder = holder;
 		this.balance = balance;
-		this.type = type;	
+		this.type = type;
 		this.withdrawLimit = withdrawLimit;
+		this.passcode = passcode;
 	}
 
 	public int getNumber() {
@@ -50,28 +52,37 @@ public abstract class Account {
 		return withdrawLimit;
 	}
 
+	public String getPasscode() {
+		return passcode;
+	}
+
+	public void setPasscode(String passcode) {
+		this.passcode = passcode;
+	}
+
 	public void deposit(double amount) {
 		balance += amount;
 	}
-	
-	public void withdraw(double amount, double withdrawLimit) {
-		if (amount > withdrawLimit) {
-			throw new DomainException("The amount exceeds withdraw limit");
+
+	public void withdraw(double amount, double withdrawLimit, String passcode) {
+		if (passcode.equals(getPasscode())) {
+
+			if (amount > withdrawLimit) {
+				throw new DomainException("The amount exceeds withdraw limit");
+			}
+			if (amount > balance) {
+				throw new DomainException("Insuficient balance");
+			}
+
+			balance -= amount;
 		}
-		if (amount > balance) {
-			throw new DomainException("Insuficient balance");
+		else {
+			throw new DomainException("Invalid Passcode");
 		}
-		balance -= amount;
 	}
-	
+
 	public String toString() {
-		return "Account "
-				+ number
-				+ "\nHolder: "
-				+ holder
-				+ "\nAccount Type: "
-				+ type
-				+ "\nBalance: $"
+		return "Account " + number + "\nHolder: " + holder + "\nAccount Type: " + type + "\nBalance: $"
 				+ String.format("%.2f", balance);
 	}
 

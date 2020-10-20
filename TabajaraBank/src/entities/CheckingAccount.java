@@ -8,15 +8,16 @@ public final class CheckingAccount extends Account{
 
 	public CheckingAccount() {
 		super();
+	}	
+	
+	public CheckingAccount(int number, String holder, double balance, AccountType type, double withdrawLimit,
+			String passcode) {
+		super(number, holder, balance, type, withdrawLimit, passcode);
 	}
 
-	public CheckingAccount(int number, String holder, double balance, AccountType type, double withdrawLimit) {
-		super(number, holder, balance, type, withdrawLimit);
-	}
-	
 	@Override
-	public void withdraw(double amount, double withdrawLimit) {
-		super.withdraw(amount, withdrawLimit);
+	public void withdraw(double amount, double withdrawLimit, String passcode) {
+		super.withdraw(amount, withdrawLimit, passcode);
 		balance -= fee;
 	}
 }
