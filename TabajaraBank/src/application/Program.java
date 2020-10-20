@@ -1,14 +1,15 @@
 package application;
 
-import entities.enums.AccountType;
-import entities.exceptions.DomainException;
-
 import java.util.Scanner;
 
 import entities.Account;
 import entities.BusinessAccount;
 import entities.CheckingAccount;
 import entities.SavingAccount;
+import entities.enums.AccountType;
+import entities.exceptions.DomainException;
+import services.BrazilTaxService;
+import services.CheckingService;
 
 public class Program {
 
@@ -36,8 +37,8 @@ public class Program {
 			double withdrawLimit = sc.nextDouble();
 		
 			if(accountType.ordinal() == 0) {
-				account = new CheckingAccount(number, holder, balance, accountType, withdrawLimit, passcode);
-			}
+				account = new CheckingAccount(number, holder, balance, accountType, withdrawLimit, passcode, new CheckingService(new BrazilTaxService()));
+			}	
 			else if(accountType.ordinal() == 1) {
 				System.out.print("Interest Rate: ");
 				double interestRate = sc.nextDouble();
@@ -54,6 +55,7 @@ public class Program {
 			}
 		
 			System.out.println();
+			System.out.println("WITHDRAW:");
 			System.out.print("Enter your password: ");
 			sc.nextLine();
 			String pass = sc.nextLine();

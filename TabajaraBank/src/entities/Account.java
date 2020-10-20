@@ -75,8 +75,7 @@ public abstract class Account {
 			}
 
 			balance -= amount;
-		}
-		else {
+		} else {
 			throw new DomainException("Invalid Passcode");
 		}
 	}
