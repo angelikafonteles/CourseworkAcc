@@ -75,13 +75,20 @@ public abstract class Account {
 			}
 
 			balance -= amount;
-		} else {
+		}
+		else {
 			throw new DomainException("Invalid Passcode");
 		}
 	}
 
 	public String toString() {
-		return "Account " + number + "\nHolder: " + holder + "\nAccount Type: " + type + "\nBalance: $"
+		return "Account "
+				+ number
+				+ "\nHolder: "
+				+ holder
+				+ "\nAccount Type: "
+				+ type
+				+ "\nBalance: $"
 				+ String.format("%.2f", balance);
 	}
 

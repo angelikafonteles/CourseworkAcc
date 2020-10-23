@@ -3,11 +3,11 @@ package entities;
 import entities.enums.AccountType;
 import services.CheckingService;
 
-public class CheckingAccount extends Account{
+public final class CheckingAccount extends Account{
 
 	private static double fee = 2.0;
 	
-	CheckingService checkingService;
+	private CheckingService checkingService;
 
 	public CheckingAccount() {
 		super();
